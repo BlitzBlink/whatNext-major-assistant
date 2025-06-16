@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --text-base-size: 1em;
+    
+    /* colors variables */
+    --primary-color: #107F4C;
+    --dark-green-color: #0F4C3A;
+    --light-green-color: #17BA6F;
+    --black-color: #070707;
+    --white-color: #FFFFFF;
+    --gray-color: #D9D9D9;
+    --dark-gray-color: #636363;
+    --red-color: #EF4444;
+
+    /* typography variables - Mobile */
+    --fs-heading: 1.25rem;      /* Heading */
+    --fs-subheading: 1rem; /* Subheading */
+    --fs-body: .875rem;         /* body */
+    --fs-label: 0.75rem;    /* label */
+
+    --fw-bold: 700;
+    --fw-semibold: 600;
+    --fw-medium: 500;
+    --fw-regular: 400;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--black-color);
+}
+
+main {
+  flex: 1;
+}
+
+h1, h2, h3, p, ul, li, header, footer {
+    margin: 0;
+}
+
+a {
+  color: var(--black-color);
+  text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  max-width: 1100px;
+}
+
+
+/* Desktop and Tablet typography */
+@media (min-width: 768px) {
+  :root {
+    --fs-heading: 2rem;      /* Heading */
+    --fs-subheading: 1.5rem; /* Subheading */
+    --fs-body: 1rem;         /* body */
+    --fs-label: 0.75rem      /* label */
+}
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: 6.25rem;
+  }
+}
