@@ -17,9 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // Test header logged in vs logged out scenarios 
-  const isLoggedIn = false;
-
   const logginBtn = document.getElementById("login-button");
   const profileContainer = document.querySelector(".profile-container");
   const profileIcon = document.getElementById("profile-icon");
