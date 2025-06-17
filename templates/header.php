@@ -4,7 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WhatNext</title>
+  <link rel="icon" href="../public/assets/images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../public/assets/css/styles.css">
+  <?php if (isset($page) && $page === 'home'): ?>
+    <link rel="stylesheet" href="../public/assets/css/home.css">
+  <?php endif; ?>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
