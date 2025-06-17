@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="../public/assets/css/styles.css">
   <?php if (isset($page) && $page === 'home'): ?>
     <link rel="stylesheet" href="../public/assets/css/home.css">
+  <?php elseif (isset($page) && $page === 'chatbot'): ?>
+    <link rel="stylesheet" href="../public/assets/css/chatbot.css">
   <?php endif; ?>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
