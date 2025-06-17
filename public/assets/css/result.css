@@ -1,0 +1,125 @@
+.result {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
+}
+
+
+.result .container,
+.results-container,
+.result-card, 
+.text-container,
+.cta-container,
+.other-majors-container,
+.retake-container  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.result .container {
+    gap: 3rem;
+}
+
+.results-container {
+    gap: 3rem;
+    padding-top: 3rem;
+}
+
+.result .container h2 {
+    font-weight: var(--fw-regular);
+}
+
+.result .container h3 {
+    font-size: var(--fs-body);
+    font-weight: var(--fw-bold);
+}
+
+.result-card {
+    padding: 1.5rem 1rem;
+    border: .125rem solid var(--gray-color);
+    background-color: var(--white-color);
+    border-radius: .375rem;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.1);
+    max-width: 25rem;
+    position: relative;
+    overflow: visible;
+}
+
+.result-card.best-match-card {
+    border-radius: 0 .375rem .375rem .375rem;
+    border-color: var(--primary-color);
+}
+
+.major-img {
+    max-width: 5rem;
+}
+
+.text-container,
+.cta-container {
+    gap: .75rem;
+}
+
+.cta-container {
+    margin-top: auto;
+}
+
+.best-match-tag {
+    display: none;
+}
+
+.best-match-card .best-match-tag {
+    display: block;
+    position: absolute;
+    top: -2.8rem;
+    left: -.12rem;
+    font-size: var(--fs-body);
+    padding: .75rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 6px 6px 0px 0px;
+}
+
+.other-majors-container {
+    gap: 2rem;
+}
+
+.retake-container {
+    gap: 3rem;
+    padding: 3rem 0;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+    .result-card {
+        padding: 2rem 2.25rem;
+        gap: 1.5rem;
+        border: .125rem solid var(--gray-color);
+        background-color: var(--white-color);
+        border-radius: .375rem;
+        box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.1);
+        max-width: 25rem;
+        position: relative;
+        overflow: visible;
+    }
+
+    .best-match-card .best-match-tag {
+        top: -3rem;
+    }
+
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+    .other-majors-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .other-majors-container .result-card {
+        flex: 1;
+    }
+
+}
