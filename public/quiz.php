@@ -1,9 +1,19 @@
-<?php 
+<?php
 session_start();
-include_once '../templates/header.php';
+if (!isset($_SESSION['account_id'])) {
+    // User is not logged in, redirect to login page
+    header("Location: /whatnext/public/login.php");
+    exit();
+}
 
+$page = 'quiz';
+include_once('../templates/header.php');
+include_once('../src/config/db.php');
+?>
+
+<?php
 class Question
-{   
+{
     public $question;
     public $options;
     public $answerchoosen;
@@ -141,19 +151,19 @@ if (!isset($_SESSION['current_question'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
         $current = $_SESSION['current_question'];
-        
+
         // Save current answer if provided
         if (isset($_POST['answer'])) {
             $_SESSION['quiz_answers'][$current] = $_POST['answer'];
             $questions[$current]->setanswer($_POST['answer']);
-            
+
             // Update trait scores
             $traitValue = intval($_POST['answer']);
             if ($traitValue >= 1 && $traitValue <= 5) {
                 $_SESSION['user_traits'][$traitValue - 1]++;
             }
         }
-        
+
         // Handle navigation
         if ($_POST['action'] === 'next') {
             if ($current < count($questions) - 1) {
@@ -199,85 +209,73 @@ function get_all_answers_count()
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="../public/assets/css/styles.css">
-    <link rel="stylesheet" href="../public/assets/css/quiz.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+<div class="Title">
+    <h1>Discover Your Perfect Major</h1>
+    <p>Answer a few quick questions to find a major that fits your strengths.</p>
+</div>
 
-<body>
-    
-    <div class="Title">
-        <h1>Discover Your Perfect Major</h1>
-        <p>Answer a few quick questions to find a major that fits your strengths.</p>
+<div class="content">
+    <div class="track-bar">
+        <div class="steps">
+            <?php for ($i = 0; $i < count($questions); $i++): ?>
+                <?php render_circle($i, is_question_answered($i)); ?>
+            <?php endfor; ?>
+        </div>
+        <img src="../public/assets/images/line.svg" alt="separate line" />
     </div>
-    
-    <div class="content">
-        <div class="track-bar">
-            <div class="steps">
-                <?php for ($i = 0; $i < count($questions); $i++): ?>
-                    <?php render_circle($i, is_question_answered($i)); ?>
+
+    <form method="POST">
+        <div class="Quiz-main">
+            <div>
+                <p><?php echo htmlspecialchars($currentQuestion->question); ?></p>
+            </div>
+
+            <div class="options">
+                <?php for ($i = 0; $i < 4; $i++): ?>
+                    <label class="choice">
+                        <input type="radio" name="answer" value="<?php echo $currentQuestion->options[$i][1]; ?>"
+                            <?php echo ($currentAnswer == $currentQuestion->options[$i][1]) ? 'checked' : ''; ?> hidden>
+                        <div class="circle">
+                            <p><?php echo chr(65 + $i); ?></p>
+                        </div>
+                        <p><?php echo htmlspecialchars($currentQuestion->options[$i][0]); ?></p>
+                    </label>
                 <?php endfor; ?>
             </div>
-            <img src="../public/assets/images/line.svg" alt="separate line"/>
-        </div>
-        
-        <form method="POST">
-            <div class="Quiz-main">
-                <div>
-                    <p><?php echo htmlspecialchars($currentQuestion->question); ?></p>
-                </div>
 
-                <div class="options">
-                    <?php for ($i = 0; $i < 4; $i++): ?>
-                        <label class="choice">
-                            <input type="radio" name="answer" value="<?php echo $currentQuestion->options[$i][1]; ?>"
-                                   <?php echo ($currentAnswer == $currentQuestion->options[$i][1]) ? 'checked' : ''; ?> hidden>
-                            <div class="circle"><p><?php echo chr(65 + $i); ?></p></div>
-                            <p><?php echo htmlspecialchars($currentQuestion->options[$i][0]); ?></p>
-                        </label>
-                    <?php endfor; ?>
-                </div>
-                
-                <div class="buttons">
-                    <?php if ($currentQuestionIndex > 0): ?>
-                        <button type="submit" name="action" value="prev" class="image-button">
-                            <img src="../public/assets/images/Button-prev.svg" alt="Previous" />
-                        </button>
-                    <?php endif; ?>
+            <div class="buttons">
+                <?php if ($currentQuestionIndex > 0): ?>
+                    <button type="submit" name="action" value="prev" class="image-button">
+                        <img src="../public/assets/images/Button-prev.svg" alt="Previous" />
+                    </button>
+                <?php endif; ?>
 
-                    <?php if ($currentQuestionIndex < count($questions) - 1): ?>
-                        <button type="submit" name="action" value="next" class="image-button">
-                            <img src="../public/assets/images/Button-next.svg" alt="Next" />
+                <?php if ($currentQuestionIndex < count($questions) - 1): ?>
+                    <button type="submit" name="action" value="next" class="image-button">
+                        <img src="../public/assets/images/Button-next.svg" alt="Next" />
+                    </button>
+                <?php else: ?>
+                    <?php if (get_all_answers_count() === count($questions)): ?>
+                        <button type="submit" name="action" value="submit" class="image-button submit-btn">
+                            Submit Quiz
                         </button>
                     <?php else: ?>
-                        <?php if (get_all_answers_count() === count($questions)): ?>
-                            <button type="submit" name="action" value="submit" class="image-button submit-btn">
-                                Submit Quiz
-                            </button>
-                        <?php else: ?>
-                            <button type="button" class="image-button disabled" disabled>
-                                Answer all questions to submit
-                            </button>
-                        <?php endif; ?>
+                        <button type="button" class="image-button disabled" disabled>
+                            Answer all questions to submit
+                        </button>
                     <?php endif; ?>
-                </div>
-                
-                <div class="progress-info">
-                    <p>Question <?php echo $currentQuestionIndex + 1; ?> of <?php echo count($questions); ?></p>
-                    <p>Answered: <?php echo get_all_answers_count(); ?>/<?php echo count($questions); ?></p>
-                </div>
+                <?php endif; ?>
             </div>
-        </form>
-    </div>
 
-    <?php include '../templates/footer.php'; ?>
+            <div class="progress-info">
+                <p>Question <?php echo $currentQuestionIndex + 1; ?> of <?php echo count($questions); ?></p>
+                <p>Answered: <?php echo get_all_answers_count(); ?>/<?php echo count($questions); ?></p>
+            </div>
+        </div>
+    </form>
+</div>
+
+<?php include '../templates/footer.php'; ?>
 </body>
+
 </html>

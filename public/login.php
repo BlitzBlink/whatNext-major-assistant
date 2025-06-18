@@ -4,7 +4,6 @@ include_once('../templates/header.php');
 include_once('../src/config/db.php');
 ?>
 
-<link rel="stylesheet" href="/css/auth.css">
 <main class="auth">
     <section>
         <div class="container">

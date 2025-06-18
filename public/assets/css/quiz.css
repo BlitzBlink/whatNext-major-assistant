@@ -1,20 +1,3 @@
-/* 1. RESET MARGIN & PADDING */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Poppins, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
-  width: 100%;
-  min-height: 100vh;
-}
-
 /* 2. MAIN CONTAINER WRAPPER */
 .container {
   width: 100%;
@@ -23,16 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-}
-
-/* 3. HEADER & FOOTER */
-header, footer {
-  width: 100%;
-  
-}
-
-header .container, footer .container {
-  margin: auto;
 }
 
 /* 4. TITLE */
@@ -63,6 +36,10 @@ header .container, footer .container {
 
 .track-bar {
   height: auto;
+}
+
+.content form {
+  width: 100%;
 }
 
 .steps {
@@ -135,6 +112,7 @@ header .container, footer .container {
 .options {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
   width: 75%;
 }

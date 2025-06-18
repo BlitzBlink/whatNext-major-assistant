@@ -21,6 +21,8 @@ if (session_status() === PHP_SESSION_NONE) {
             <link rel="stylesheet" href="../public/assets/css/auth.css">
     <?php elseif (isset($page) && $page === 'chatbot'): ?>
             <link rel="stylesheet" href="../public/assets/css/chatbot.css">
+    <?php elseif (isset($page) && $page === 'quiz'): ?>
+            <link rel="stylesheet" href="../public/assets/css/quiz.css">
     <?php endif; ?>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
