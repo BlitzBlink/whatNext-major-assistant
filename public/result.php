@@ -75,5 +75,4 @@ $bestMatch = array_shift($majors);
             </div>
     </section>
 </main>
-<script src="./assets/js/header.js"></script>
 <?php include_once('../templates/footer.php'); ?>
