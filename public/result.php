@@ -15,7 +15,6 @@ if ($result && $result->num_rows > 0) {
 $bestMatch = array_shift($majors);
 ?>
 
-<link rel="stylesheet" href="/css/result.css">
 <main class="result">
     <section>
         <div class="container">
