@@ -17,10 +17,11 @@ include_once('../templates/header.php');
         </div>
     </section>
 </main>
-<script src="./assets/js/header.js"></script>
 <script>
-    setTimeout(() => {
+    document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
         window.location.href = "/whatnext/public/result.php";
-    }, 3000)
+        }, 3000);
+    });
 </script>
 <?php include_once('../templates/footer.php'); ?>
