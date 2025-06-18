@@ -17,11 +17,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
 }
 
-#heading p {
-    margin-top: -15px;
-}
+
+
 
 #colored-text {
     color: var(--primary-color);
@@ -36,11 +36,11 @@
 }
 
 /* background */
-.container {
+#container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url("../public/assets/images/mash-blured-bg.jpg");
+    background-image: url("../images/mash-blured-bg.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100vw ;
@@ -50,14 +50,32 @@
     border: solid 2px var(--gray-color);
     border-radius: 10px;
     padding: 10px 60px;
-   
+}
+
+#toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.suggestion-cards {
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+.card {
+    margin: 10px;
+    transition: 300ms;
+}
+.card:hover {
+    border: solid 1px var(--primary-color);
+    transform: translateY(-5px);
 }
 
 .chat-container {
     overflow-Y: auto;
     scroll-behavior: smooth;
     overflow-anchor: none;
-    
+    transition: 300ms;
     
 }
 
@@ -103,7 +121,7 @@
     border: solid 1px var(--dark-gray-color);
     border-radius: 6px;
     max-width: 100%;
-    word-break: break-all;
+    word-break: break-word;
     padding: 0 10px;
 }
 
@@ -137,4 +155,25 @@
     top: 14px;
     right: 20px;
     height: 20px;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    #container {
+        padding: 10px;
+    }
+    .suggestion-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .suggestion-cards .message {
+        width: 100%;
+        padding: 10px;
+    }
+    .left-message-container {
+    max-width: 80%;
+    margin: 30px 0px;
+    justify-self: start;
+}
 }
