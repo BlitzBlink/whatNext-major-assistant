@@ -4,7 +4,7 @@ include_once('../templates/header.php');
 include_once('../src/config/db.php');
 
 $majors = [];
-$sql = "SELECT name, description FROM Major";
+$sql = "SELECT major_id, name, description FROM Major";
 $result = $conn->query($sql);
 
 if ($result && $result->num_rows > 0) {
@@ -36,7 +36,7 @@ $bestMatch = array_shift($majors);
                         </div>
                         <div class="cta-container">
                             <p>To know more about the major ask our AI</p>
-                            <a class="button button-primary">Ask the AI</a>
+                            <a class="button button-primary" href="/whatnext/public/chat.php?major_id=<?= $bestMatch['major_id']?>">Ask the AI</a>
                         </div>
                         <span class="best-match-tag">Best Match</span>
                     </div>
@@ -57,7 +57,7 @@ $bestMatch = array_shift($majors);
                                 </div>
                                 <div class="cta-container">
                                     <p>To know more about the major ask our AI</p>
-                                    <a class="button button-primary">Ask the AI</a>
+                                    <a class="button button-primary" href="/whatnext/public/chat.php?major_id=<?= $major['major_id']?>">Ask the AI</a>
                                 </div>
                             </div>
                         <?php endforeach; ?>

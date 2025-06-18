@@ -3,7 +3,6 @@ $page = 'home';
 include_once('../templates/header.php');
 ?>
 
-<link rel="stylesheet" href="/css/home.css">
 <main class="home">
   <section class="hero">
     <div class="container">

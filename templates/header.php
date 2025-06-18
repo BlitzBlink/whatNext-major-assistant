@@ -14,15 +14,17 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="icon" href="../public/assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../public/assets/css/styles.css">
     <?php if (isset($page) && $page === 'quiz'): ?>
-         <link rel="stylesheet" href="../public/assets/css/quiz.css">
+        <link rel="stylesheet" href="../public/assets/css/quiz.css">
     <?php elseif (isset($page) && $page === 'home'): ?>
         <link rel="stylesheet" href="../public/assets/css/home.css">
+    <?php elseif (isset($page) && $page === 'analyzing'): ?>
+        <link rel="stylesheet" href="../public/assets/css/analyzing.css">
     <?php elseif (isset($page) && $page === 'result'): ?>
         <link rel="stylesheet" href="../public/assets/css/result.css">
     <?php elseif (isset($page) && (($page === 'register') || ($page === 'login'))): ?>
-            <link rel="stylesheet" href="../public/assets/css/auth.css">
+        <link rel="stylesheet" href="../public/assets/css/auth.css">
     <?php elseif (isset($page) && $page === 'chatbot'): ?>
-            <link rel="stylesheet" href="../public/assets/css/chatbot.css">
+        <link rel="stylesheet" href="../public/assets/css/chatbot.css">
     <?php endif; ?>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
