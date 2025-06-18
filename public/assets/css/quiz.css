@@ -1,31 +1,16 @@
-html, body {
-      height: 100%;
-      width: 100vw;
+html , body {
+      height: auto;
+      width: auto;
+      min-width: 100%;
       margin: 0;
       min-height: 100vh;
     }
-body {
-  display:flex;
-  width: 100vw;
-  flex-direction: column;
-  flex:1;
-}
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
 
-main .container {
-  flex: 1; /* Fills remaining space */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Optional: center content vertically */
-}
+
+
 /* 2. MAIN CONTAINER WRAPPER */
 .container {
   width: 100%;
-  max-width: 1200px;
   height: auto;
   padding-left:  2rem;
   padding-right:  2rem;
