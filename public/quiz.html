@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+  <link rel="stylesheet" href="../public/assets/css/styles.css">
+  <link rel="stylesheet" href="../public/assets/css/quiz.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+  <header>
+    <div class="logo-container">
+        <a href="../public/index.php" class="logo">
+            <img src="../public/assets/images/icon-logo-lg.svg" alt="WhatNext logo icon" class="logo-icon-lg">
+            <img src="../public/assets/images/icon-logo-sm.svg" alt="WhatNext logo icon" class="logo-icon-sm">
+            <span class="logo-text"><span class="primary-text">WhatNext</span><br>Major Counseling Assistant</span>
+        </a>
+    </div>
+
+    <div class="links-container">
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="/public/index.php">Home</a></li>
+                <li><a href="/public/quiz.php">About the quiz</a></li>
+            </ul>
+            <div class="auth-container">
+                <a class="button button-primary" id="login-button">
+                    Login
+                </a>
+                <div class="profile-container hidden">
+                    <img src="../public/assets/images/icon-profile.svg" alt="Profile Icon" class="profile-icon" id="profile-icon">
+                    <div class="profile-dropdown" id="profile-dropdown">
+                        <a class="profile-view" href="/public/profile.php">
+                            <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
+                            <span>MoazJalal02</span>
+                        </a>
+                        <a class="profile-signout" href="/public/logout.php">
+                            <img src="../public/assets/images/icon-signout.svg" class="profile-signout-icon">
+                            Sign Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        
+        <button class="menu-button" aria-label="Toggle menu">
+            <img class="menu-icon" src="../public/assets/images/icon-menu.svg" alt="Menu icon">
+        </button>
+    </div>
+
+    <div class="mobile-menu">
+        <ul>
+            <li class="auth-mobile auth-logged-out"><a href="/public/login.php">Login</a></li>
+            <li class="auth-mobile auth-logged-in profile-view hidden ">
+                <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
+                <span>MoazJalal02</span>
+            </li>
+            <li><a href="/public/index.php">Home</a></li>
+            <li><a href="/public/quiz.php">About the quiz</a></li>
+            <li class="auth-mobile auth-logged-in hidden">
+                <a class="profile-signout" href="/public/logout.php">
+                    <img src="../public/assets/images/icon-signout.svg" class="profile-signout-icon">
+                    Sign Out
+                </a>
+            </li>
+        </ul>
+    </div>
+  </header>
+<body>
+    <div class="Title">
+        <h1>Discover Your Perfect Major</h1>
+        <p> Answer a few quick questions to find a major that fits your strengths.</p>
+    </div>
+    <div class="content">
+        <div class="track-bar">
+            <div class="steps">
+                <div class="circle">
+                    <p>1</p>
+                </div>
+                <div class="circle">
+                    <p>2</p>
+                </div>
+                <div class="circle">
+                    <p>3</p>
+                </div>
+                <div class="circle">
+                    <p>4</p>
+                </div>
+                <div class="circle">
+                    <p>5</p>
+                </div>
+                <div class="circle">
+                    <p>6</p>
+                </div>
+            </div>
+            <img src="../public/assets/images/line.svg" alt="separate line"/>
+        </div>
+        <form action="quizsubmit.php" method="POST">
+  <div class="Quiz-main">
+    <div><p>Who is the smartest guy?</p></div>
+
+    <div class="options">
+      <label class="choice">
+        <input type="radio" name="q1" value="A" hidden>
+        <div class="circle"><p>A</p></div>
+        <p>Eyad</p>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="q1" value="B" hidden>
+        <div class="circle"><p>B</p></div>
+        <p>Batman</p>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="q1" value="C" hidden>
+        <div class="circle"><p>C</p></div>
+        <p>Moaz</p>
+      </label>
+
+      <label class="choice">
+        <input type="radio" name="q1" value="D" hidden>
+        <div class="circle"><p>D</p></div>
+        <p>Rami</p>
+      </label>
+    </div>
+    <div class="buttons">
+      <button type="button" class="image-button">
+        <img src="../public/assets/images/Button-prev.svg" alt="Previous" />
+      </button>
+
+      <button type="submit" class="image-button">
+        <img src="../public/assets/images/Button-next.svg" alt="Next" />
+      </button>
+    </div>
+  </div>
+</form>
+
+
+    </div>
+
+</body>
+  <footer>
+    <div class="container">
+      <p class="footer-text">© 2025 BlitzBlink. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="/public/assets/js/main.js"></script>
+</body>
+</html>
+
+</html>

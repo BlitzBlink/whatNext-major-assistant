@@ -58,5 +58,4 @@ include_once('../templates/header.php');
     </div>
   </section>
 </main>
-<script src="./assets/js/header.js"></script>
 <?php include_once('../templates/footer.php'); ?>
