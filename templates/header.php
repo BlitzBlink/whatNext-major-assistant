@@ -13,7 +13,9 @@ if (session_status() === PHP_SESSION_NONE) {
     <title>WhatNext</title>
     <link rel="icon" href="../public/assets/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../public/assets/css/styles.css">
-    <?php if (isset($page) && $page === 'home'): ?>
+    <?php if (isset($page) && $page === 'quiz'): ?>
+         <link rel="stylesheet" href="../public/assets/css/quiz.css">
+    <?php elseif (isset($page) && $page === 'home'): ?>
         <link rel="stylesheet" href="../public/assets/css/home.css">
     <?php elseif (isset($page) && $page === 'result'): ?>
         <link rel="stylesheet" href="../public/assets/css/result.css">
