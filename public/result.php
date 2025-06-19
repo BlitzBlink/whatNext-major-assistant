@@ -16,8 +16,7 @@ if ($result && $result->num_rows > 0) {
     }
 }
 $bestMatch = array_shift($majors);
-if(isset($_POST['reset']))
-{
+if (isset($_POST['reset'])) {
     $_SESSION['reset']  = true;
     header('Location: quiz.php');
     exit();
@@ -44,7 +43,7 @@ if(isset($_POST['reset']))
                         </div>
                         <div class="cta-container">
                             <p>To know more about the major ask our AI</p>
-                            <a class="button button-primary" href="/whatnext/public/chat.php?major_id=<?= $bestMatch['major_id']?>">Ask the AI</a>
+                            <a class="button button-primary" href="/whatnext/public/chat.php?major_id=<?= $bestMatch['major_id'] ?>">Ask the AI</a>
                         </div>
                         <span class="best-match-tag">Best Match</span>
                     </div>
@@ -65,7 +64,7 @@ if(isset($_POST['reset']))
                                 </div>
                                 <div class="cta-container">
                                     <p>To know more about the major ask our AI</p>
-                                    <a class="button button-primary" href="/whatnext/public/chat.php?major_id=<?= $major['major_id']?>">Ask the AI</a>
+                                    <a class="button button-primary" href="/whatnext/public/chat.php?major_id=<?= $major['major_id'] ?>">Ask the AI</a>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -78,10 +77,10 @@ if(isset($_POST['reset']))
                         <h3>Retake Quiz</h3>
                         <p>Not quite convinced? Try the quiz again for a fresh perspective.</p>
                     </div>
-                    <form method="post" action = "">
-                        <button class="button" type="submit" name="reset">Retake Quiz</button>
-                        </form>
-                    
+                    <form method="post" action="">
+                        <button class="button button-secondary" type="submit" name="reset">Retake Quiz</button>
+                    </form>
+
                 </div>
             </div>
     </section>

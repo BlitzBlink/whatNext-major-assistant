@@ -3,6 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: inherit;
+    font-size: var(--fs-text);
     padding: .5rem 1.5rem;
     width: fit-content;
     min-width: 8rem;
@@ -14,9 +16,12 @@
 }
 
 .button-primary {
-    border-color:var(--primary-color);
     background-color: var(--primary-color);
     color: var(--white-color);
+}
+
+.button-secondary {
+    background-color: var(--white-color);
 }
 
 .primary-text {
