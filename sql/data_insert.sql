@@ -22,58 +22,59 @@ INSERT INTO Trait (name) VALUES
 
 -- INSERT MajorTraits !NOT READY YET DON'T ADD UNTILL WE DETERMINE THE WEIGHTS
 
--- Computer Science 
+-- Computer Science
 INSERT INTO MajorTrait (major_id, trait_id, weight) VALUES
 (1, 1, 9),  -- Analytical
-(1, 2, 4),  -- Creative
-(1, 3, 3),  -- Social
+(1, 2, 6),  -- Creative
+(1, 3, 2),  -- Social
 (1, 4, 8),  -- Organized
 (1, 5, 4);  -- Hands-on
 
---  Psychology
+-- Psychology
 INSERT INTO MajorTrait (major_id, trait_id, weight) VALUES
-(2, 1, 9),  -- Analytical
-(2, 2, 4),  -- Creative
-(2, 3, 3),  -- Social
-(2, 4, 8),  -- Organized
-(2, 5, 4);  -- Hands-on
+(2, 1, 7),  -- Analytical
+(2, 2, 5),  -- Creative
+(2, 3, 9),  -- Social
+(2, 4, 6),  -- Organized
+(2, 5, 3);  -- Hands-on
 
---  Engineering
+-- Engineering
 INSERT INTO MajorTrait (major_id, trait_id, weight) VALUES
 (3, 1, 9),  -- Analytical
-(3, 2, 4),  -- Creative
+(3, 2, 5),  -- Creative
 (3, 3, 3),  -- Social
 (3, 4, 8),  -- Organized
-(3, 5, 4);  -- Hands-on
+(3, 5, 8);  -- Hands-on
 
---  Business
+-- Business
 INSERT INTO MajorTrait (major_id, trait_id, weight) VALUES
-(4, 1, 9),  -- Analytical
-(4, 2, 4),  -- Creative
-(4, 3, 3),  -- Social
-(4, 4, 8),  -- Organized
-(4, 5, 4);  -- Hands-on
+(4, 1, 8),  -- Analytical
+(4, 2, 7),  -- Creative
+(4, 3, 8),  -- Social
+(4, 4, 7),  -- Organized
+(4, 5, 5);  -- Hands-on
 
---  Biomedical Sciences
+-- Biomedical Sciences
 INSERT INTO MajorTrait (major_id, trait_id, weight) VALUES
 (5, 1, 9),  -- Analytical
-(5, 2, 4),  -- Creative
-(5, 3, 3),  -- Social
+(5, 2, 5),  -- Creative
+(5, 3, 4),  -- Social
 (5, 4, 8),  -- Organized
-(5, 5, 4);  -- Hands-on
+(5, 5, 6);  -- Hands-on
 
---  Education
+-- Education
 INSERT INTO MajorTrait (major_id, trait_id, weight) VALUES
-(6, 1, 9),  -- Analytical
-(6, 2, 4),  -- Creative
-(6, 3, 3),  -- Social
-(6, 4, 8),  -- Organized
+(6, 1, 6),  -- Analytical
+(6, 2, 6),  -- Creative
+(6, 3, 9),  -- Social
+(6, 4, 7),  -- Organized
 (6, 5, 4);  -- Hands-on
 
---  Economy
+-- Economy
 INSERT INTO MajorTrait (major_id, trait_id, weight) VALUES
 (7, 1, 9),  -- Analytical
-(7, 2, 4),  -- Creative
-(7, 3, 3),  -- Social
-(7, 4, 8),  -- Organized
-(7, 5, 4);  -- Hands-on
+(7, 2, 6),  -- Creative
+(7, 3, 5),  -- Social
+(7, 4, 9),  -- Organized
+(7, 5, 3);  -- Hands-on
+
