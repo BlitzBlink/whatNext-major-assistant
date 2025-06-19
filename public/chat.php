@@ -1,6 +1,11 @@
 <?php
 $page = 'chatbot';
 include_once('../templates/header.php');
+include_once('../src/config/db.php');
+$majorID = $_GET['major_id'];
+$query = "SELECT name FROM Major WHERE major_id = $majorID;";
+$result = mysqli_query($conn, $query);
+$major = mysqli_fetch_assoc($result);
 ?>
 
 
@@ -10,16 +15,16 @@ include_once('../templates/header.php');
         <main>
             <section id="heading">
                 <h2>Chat with <span id="colored-text">WhatNext </span>Assistant</h2>
-                <p>Ask me anything about ... major</p>
+                <p>Ask me anything about <?php echo $major['name']; ?> major</p>
             </section>
             <section id="chatting">
                 <div id="container">
                     <div id="toggle">
                         <h3>Where should we begin?</h3>
                         <div class="suggestion-cards">
-                            <div class="message card"><p>What skills do I need?</p></div>
-                            <div class="message card"><p>What Jobs can I get after graduation?</p></div>
-                            <div class="message card"><p>What is the average annual salary for this major?</p></div>
+                            <div class="message card"><p>What skills do I need in <?php echo $major['name']; ?>?</p></div>
+                            <div class="message card"><p>What Jobs can I get after graduation in <?php echo $major['name']; ?>?</p></div>
+                            <div class="message card"><p>What is the average annual salary for <?php echo $major['name']; ?> major?</p></div>
                         </div>
                     </div>
                     <div class="chat-container">
