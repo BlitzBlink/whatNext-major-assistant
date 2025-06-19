@@ -260,15 +260,26 @@ function get_all_answers_count()
                             <img src="../public/assets/images/Button-next.svg" alt="Next" />
                         </button>
                     <?php else: ?>
-                        <?php if (get_all_answers_count() === count($questions)): ?>
-                            <button type="submit" name="action" value="submit" class="image-button submit-btn">
-                                Submit Quiz
-                            </button>
-                        <?php else: ?>
-                            <button type="button" class="image-button disabled" disabled>
-                                Answer all questions to submit
-                            </button>
-                        <?php endif; ?>
+                        <?php if ($currentQuestionIndex == count($questions) - 1): ?>
+    <button id="submit-btn"
+            type="submit"
+            name="action"
+            value="submit"
+            class="image-button submit-btn"
+            style="<?php echo (get_all_answers_count() === count($questions)) ? '' : 'display:none'; ?>">
+        Submit Quiz
+    </button>
+
+    <button id="submit-disabled"
+            type="button"
+            class="image-button disabled"
+            disabled
+            style="<?php echo (get_all_answers_count() === count($questions)) ? 'display:none' : ''; ?>">
+        Answer all questions to submit
+    </button>
+<?php endif; ?>
+
+
                     <?php endif; ?>
                 </div>
                 
@@ -280,7 +291,34 @@ function get_all_answers_count()
         </form>
     </div>
 
-   
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const radios = document.querySelectorAll('input[name="answer"]');
+        const submitBtn = document.getElementById('submit-btn');
+        const disabledBtn = document.getElementById('submit-disabled');
+
+        radios.forEach(radio => {
+            radio.addEventListener("change", function () {
+                // Mark current question as answered in JS
+                const answeredCount = <?php echo count($_SESSION['quiz_answers']); ?>;
+                const totalQuestions = <?php echo count($questions); ?>;
+
+                // This counts the one just answered
+                let updatedAnswered = answeredCount;
+                const isAlreadyAnswered = <?php echo json_encode(isset($_SESSION['quiz_answers'][$currentQuestionIndex])); ?>;
+                if (!isAlreadyAnswered) {
+                    updatedAnswered += 1;
+                }
+
+                if (updatedAnswered === totalQuestions) {
+                    if (submitBtn) submitBtn.style.display = "inline-block";
+                    if (disabledBtn) disabledBtn.style.display = "none";
+                }
+            });
+        });
+    });
+</script>
+
 </main>
                         
  <?php include '../templates/footer.php'; ?>
