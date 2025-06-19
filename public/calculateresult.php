@@ -89,9 +89,6 @@ if ($insertStmt) {
     error_log("Failed to prepare insert statement: " . $conn->error);
 }
 
-// Store the results in session for the result page
-$_SESSION['quiz_results'] = $topMajors;
-
 // Close database connection
 mysqli_close($conn);
 ?>
