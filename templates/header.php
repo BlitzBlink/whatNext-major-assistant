@@ -2,6 +2,8 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+$username = $_SESSION["username"] ?? NULL;
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +54,8 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="links-container">
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="/public/index.php">Home</a></li>
-                    <li><a href="/public/quiz.php">About the quiz</a></li>
+                    <li><a href="/whatnext/public/index.php">Home</a></li>
+                    <li><a href="/whatnext/public/quiz.php">About the quiz</a></li>
                 </ul>
                 <div class="auth-container">
                     <a class="button button-primary" id="login-button" href="/whatnext/public/login.php">
@@ -64,7 +66,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div class="profile-dropdown" id="profile-dropdown">
                             <a class="profile-view" href="/whatnext/public/profile.php">
                                 <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
-                                <span>MoazJalal02</span>
+                                <span><?= htmlspecialchars($username) ?></span>
                             </a>
                             <a class="profile-signout" href="/whatnext/src/auth/logout.php">
                                 <img src="../public/assets/images/icon-signout.svg" class="profile-signout-icon">
@@ -86,10 +88,10 @@ if (session_status() === PHP_SESSION_NONE) {
                 <li class="auth-mobile auth-logged-out"><a href="/whatnext/public/login.php">Login</a></li>
                 <li class="auth-mobile auth-logged-in profile-view hidden ">
                     <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
-                    <span>MoazJalal02</span>
+                    <span><?= htmlspecialchars($username) ?></span>
                 </li>
-                <li><a href="/public/index.php">Home</a></li>
-                <li><a href="/public/quiz.php">About the quiz</a></li>
+                <li><a href="/whatnext/public/index.php">Home</a></li>
+                <li><a href="/whatnext/public/quiz.php">About the quiz</a></li>
                 <li class="auth-mobile auth-logged-in hidden">
                     <a class="profile-signout" href="../src/auth/logout.php">
                         <img src="/whatnext/public/assets/images/icon-signout.svg" class="profile-signout-icon">
