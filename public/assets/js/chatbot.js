@@ -77,13 +77,10 @@ async function callingGemini(text) {
     
     const response = await ai.models.generateContent({
         model: "gemini-2.0-flash",
-        systemInstruction: {
-            parts: [{
-                text: "Your name is WhatNext assistant"+ 
-                        "You're a college advisor. Be concise, friendly, " +
-                        "and focus on practical career advice. Keep responses " +
-                        "under 150 words unless complex questions require more."
-            }]
+        config: {
+        systemInstruction: "Your name is WhatNext assistant"+ 
+                        "You're a Major advisor. Be concise, friendly, " +
+                        "and focus on practical career advice. keep responses under 250 words unless complex questions require more",
         },
         contents: `${text}`,
     });
