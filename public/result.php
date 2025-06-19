@@ -16,6 +16,12 @@ if ($result && $result->num_rows > 0) {
     }
 }
 $bestMatch = array_shift($majors);
+if(isset($_POST['reset']))
+{
+    $_SESSION['reset']  = true;
+    header('Location: quiz.php');
+    exit();
+}
 ?>
 
 <main class="result">
@@ -72,9 +78,13 @@ $bestMatch = array_shift($majors);
                         <h3>Retake Quiz</h3>
                         <p>Not quite convinced? Try the quiz again for a fresh perspective.</p>
                     </div>
-                    <a class="button">Retake Quiz</a>
+                    <form method="post" action = "">
+                        <button class="button" type="submit" name="reset">Retake Quiz</button>
+                        </form>
+                    
                 </div>
             </div>
     </section>
 </main>
+
 <?php include_once('../templates/footer.php'); ?>
