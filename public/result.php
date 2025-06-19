@@ -4,7 +4,10 @@ include_once('../templates/header.php');
 include_once('../src/config/db.php');
 
 $majors = [];
-$sql = "SELECT major_id, name, description FROM Major";
+$sql = "SELECT major_id, name, description 
+FROM Major 
+WHERE major_id IN (SELECT major_id FROM ResultMajor);
+";
 $result = $conn->query($sql);
 
 if ($result && $result->num_rows > 0) {

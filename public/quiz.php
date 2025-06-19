@@ -1,7 +1,7 @@
 <?php 
 $page = 'quiz';
 include_once '../templates/header.php';
-
+include_once('../src/config/db.php');
 $account_id = $_SESSION['account_id'] ?? null;
 if(!$account_id) header("Location: /whatnext/public/login.php");
 
@@ -181,6 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (count($_SESSION['quiz_answers']) === count($questions)) {
                 // Final recalculation before submitting
                 recalculate_traits();
+                include_once('./calculateresult.php');
                 header('Location: result.php');
                 exit;
             }
