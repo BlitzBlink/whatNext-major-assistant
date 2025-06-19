@@ -129,14 +129,28 @@ $q20->setoptionwholly("Data science research assistant", 1, "Marketing design in
 $questions = array($q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, $q11, $q12, $q13, $q14, $q15, $q16, $q17, $q18, $q19, $q20);
 
 // Initialize session data if not exists
-if (!isset($_SESSION['quiz_answers'])) {
+if(!isset($_SESSION['reset'] )) {
+
+    $_SESSION['reset'] = false;
+    
+}
+if(!isset($_SESSION['quiz_answers'] )) {
     $_SESSION['quiz_answers'] = array();
+   
+    
 }
 if (!isset($_SESSION['user_traits'])) {
     $_SESSION['user_traits'] = array(0, 0, 0, 0, 0);
 }
 if (!isset($_SESSION['current_question'])) {
     $_SESSION['current_question'] = 0;
+}
+if(isset($_SESSION['reset']) && $_SESSION['reset'] === true)
+{
+    $_SESSION['quiz_answers'] = array();
+    $_SESSION['user_traits'] = array(0, 0, 0, 0, 0);
+     $_SESSION['current_question'] = 0;
+     $_SESSION['reset'] = false;
 }
 
 // Handle form submission
