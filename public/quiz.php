@@ -1,8 +1,9 @@
 <?php 
 $page = 'quiz';
-session_start();
 include_once '../templates/header.php';
-$page = 'quiz';
+
+$account_id = $_SESSION['account_id'] ?? null;
+if(!$account_id) header("Location: /whatnext/public/login.php");
 class Question
 {   
     public $question;
@@ -267,6 +268,5 @@ function get_all_answers_count()
 
    
 </main>
- </body>
                         
  <?php include '../templates/footer.php'; ?>
