@@ -4,6 +4,17 @@ include_once '../templates/header.php';
 include_once('../src/config/db.php');
 $account_id = $_SESSION['account_id'] ?? null;
 if(!$account_id) header("Location: /whatnext/public/login.php");
+if(!isset($_SESSION['reset'] )) {
+
+    $_SESSION['reset'] = false;
+    
+}
+if (isset($_SESSION['reset']) && $_SESSION['reset'] === true){
+    $_SESSION['current_question'] = 0;
+    $_SESSION['user_traits'] = array(0, 0, 0, 0, 0);
+    $_SESSION['quiz_answers'] = array();
+    $_SESSION['reset'] = false;
+}
 
 class Question
 {   
@@ -130,11 +141,7 @@ $q20->setoptionwholly("Data science research assistant", 1, "Marketing design in
 $questions = array($q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, $q11, $q12, $q13, $q14, $q15, $q16, $q17, $q18, $q19, $q20);
 
 // Initialize session data if not exists
-if(!isset($_SESSION['reset'] )) {
 
-    $_SESSION['reset'] = false;
-    
-}
 if(!isset($_SESSION['quiz_answers'] )) {
     $_SESSION['quiz_answers'] = array();
    
@@ -146,6 +153,7 @@ if (!isset($_SESSION['user_traits'])) {
 if (!isset($_SESSION['current_question'])) {
     $_SESSION['current_question'] = 0;
 }
+
 
 // Function to recalculate traits from all answers
 function recalculate_traits() {
