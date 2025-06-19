@@ -6,6 +6,8 @@ $majorID = $_GET['major_id'];
 $query = "SELECT name FROM Major WHERE major_id = $majorID;";
 $result = mysqli_query($conn, $query);
 $major = mysqli_fetch_assoc($result);
+$account_id = $_SESSION['account_id'] ?? null;
+if(!$account_id) header("Location: /whatnext/public/login.php");
 ?>
 
 
