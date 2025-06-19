@@ -15,12 +15,18 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="stylesheet" href="../public/assets/css/styles.css">
     <?php if (isset($page) && $page === 'home'): ?>
         <link rel="stylesheet" href="../public/assets/css/home.css">
+    <?php elseif (isset($page) && $page === 'quiz'): ?>
+        <link rel="stylesheet" href="../public/assets/css/quiz.css">
+    <?php elseif (isset($page) && $page === 'analyzing'): ?>
+        <link rel="stylesheet" href="../public/assets/css/analyzing.css">
     <?php elseif (isset($page) && $page === 'result'): ?>
         <link rel="stylesheet" href="../public/assets/css/result.css">
-    <?php elseif (isset($page) && (($page === 'register') || ($page === 'login'))): ?>
-            <link rel="stylesheet" href="../public/assets/css/auth.css">
     <?php elseif (isset($page) && $page === 'chatbot'): ?>
-            <link rel="stylesheet" href="../public/assets/css/chatbot.css">
+        <link rel="stylesheet" href="../public/assets/css/chatbot.css">
+    <?php elseif (isset($page) && (($page === 'register') || ($page === 'login'))): ?>
+        <link rel="stylesheet" href="../public/assets/css/auth.css">
+    <?php elseif (isset($page) && $page === 'profile'): ?>
+        <link rel="stylesheet" href="../public/assets/css/profile.css">
     <?php endif; ?>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +62,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <div class="profile-container hidden">
                         <img src="../public/assets/images/icon-profile.svg" alt="Profile Icon" class="profile-icon" id="profile-icon">
                         <div class="profile-dropdown" id="profile-dropdown">
-                            <a class="profile-view" href="/public/profile.php">
+                            <a class="profile-view" href="/whatnext/public/profile.php">
                                 <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
                                 <span>MoazJalal02</span>
                             </a>

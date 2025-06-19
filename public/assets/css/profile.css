@@ -1,0 +1,136 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 0;
+}
+
+.profile .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-card,
+.edit-button,
+.info-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-card {
+    padding: 3.5rem 1rem;
+    gap: 2rem;
+    border: .125rem solid var(--gray-color);
+    border-radius: .375rem;
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 31.25rem;
+    position: relative;
+}
+
+.edit-button {
+    cursor: pointer;
+    gap: .5rem;
+    position: absolute;
+    align-items: center;
+    top: 1.5rem;
+    right: 1rem;
+}
+
+.edit-icon {
+    width: 1.5rem;
+}
+
+.profile-icon {
+    width: 4rem;
+}
+
+.info-container {
+    width: 100%;
+    max-width: fit-content;
+    margin: 0 auto;
+}
+
+.info-row {
+    display: flex;
+    text-align: left;
+}
+
+.label {
+    min-width: 7rem;
+    font-weight: var(--fw-semibold);
+}
+
+.value {
+    flex: 1;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    position: relative;
+}
+
+.cancel-button {
+    border: none;
+    background: none;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.close-icon {
+    width: 1rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}
+
+.form {
+    text-align: left;
+}
+
+.form input {
+    font-family: inherit;
+}
+
+.form input:not([type="submit"]) {
+    width: 100%;
+    padding: .75rem .5rem;
+    background-color: var(--gray-color);
+    border: none;
+    border-radius: .375rem;
+    margin-bottom: 1.25rem;
+}
+
+.form input[type="submit"] {
+    margin: 0 auto;
+    font-size: var(--fs-body);
+}

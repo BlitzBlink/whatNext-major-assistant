@@ -4,7 +4,6 @@ include_once('../templates/header.php');
 include_once('../src/config/db.php');
 ?>
 
-<link rel="stylesheet" href="/css/register.css">
 <main class="register">
     <section>
         <div class="container">

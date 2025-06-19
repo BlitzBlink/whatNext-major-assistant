@@ -2,20 +2,58 @@
 $page = 'result';
 include_once('../templates/header.php');
 include_once('../src/config/db.php');
-
-$majors = [];
-$sql = "SELECT name, description FROM Major";
-$result = $conn->query($sql);
-
-if ($result && $result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        $majors[] = $row;
-    }
+$answers = $_SESSION['quiz_answers'];
+$userTraits = $_SESSION['user_traits'];
+$query = "SELECT m.major_id, m.name, m.description, mt.trait_id, mt.weight 
+          FROM Major m 
+          JOIN MajorTrait mt ON m.major_id = mt.major_id 
+          ORDER BY m.major_id, mt.trait_id";
+$result = mysqli_query($conn, $query);
+foreach( $userTraits as $value)
+{
+    echo $value;
 }
+$majorScores = [];
+
+// Process each row
+while ($row = mysqli_fetch_assoc($result)) {
+    $majorId = $row['major_id'];
+    $majorName = $row['name'];
+    $majorDescription = $row['description'];
+    $traitId = $row['trait_id'];
+    $weight = $row['weight'];
+    
+
+    
+    // Initialize major if not exists
+    if (!isset($majorScores[$majorId])) {
+        $majorScores[$majorId] = [
+            'major_id' => $majorId,
+            'name' => $majorName,
+            'description' => $majorDescription,
+            'score' => 0
+        ];
+    }
+    
+    // Map trait_id to array index and accumulate weighted score
+
+    $userTraitValue = $userTraits[$traitId - 1]; // trait_id 1-5 maps to array index 0-4
+    $majorScores[$majorId]['score'] += $userTraitValue * $weight;
+}
+
+// Sort by score descending
+uasort($majorScores, function($a, $b) {
+    
+    return $b['score'] - $a['score'];
+});
+
+// Get top 3 majors with all details
+$majors = array_slice($majorScores, 0, 3, true);
+
 $bestMatch = array_shift($majors);
+
 ?>
 
-<link rel="stylesheet" href="/css/result.css">
 <main class="result">
     <section>
         <div class="container">
@@ -36,7 +74,7 @@ $bestMatch = array_shift($majors);
                         </div>
                         <div class="cta-container">
                             <p>To know more about the major ask our AI</p>
-                            <a class="button button-primary">Ask the AI</a>
+                            <a class="button button-primary" href="/whatnext/public/chat.php?major_id=<?= $bestMatch['major_id']?>">Ask the AI</a>
                         </div>
                         <span class="best-match-tag">Best Match</span>
                     </div>
@@ -57,7 +95,7 @@ $bestMatch = array_shift($majors);
                                 </div>
                                 <div class="cta-container">
                                     <p>To know more about the major ask our AI</p>
-                                    <a class="button button-primary">Ask the AI</a>
+                                    <a class="button button-primary" href="/whatnext/public/chat.php?major_id=<?= $major['major_id']?>">Ask the AI</a>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -75,5 +113,4 @@ $bestMatch = array_shift($majors);
             </div>
     </section>
 </main>
-<script src="./assets/js/header.js"></script>
 <?php include_once('../templates/footer.php'); ?>

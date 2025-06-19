@@ -1,7 +1,9 @@
 <?php 
-session_start();
+$page = 'quiz';
 include_once '../templates/header.php';
 
+$account_id = $_SESSION['account_id'] ?? null;
+if(!$account_id) header("Location: /whatnext/public/login.php");
 class Question
 {   
     public $question;
@@ -199,21 +201,7 @@ function get_all_answers_count()
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="../public/assets/css/styles.css">
-    <link rel="stylesheet" href="../public/assets/css/quiz.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    
+<main class="container"> 
     <div class="Title">
         <h1>Discover Your Perfect Major</h1>
         <p>Answer a few quick questions to find a major that fits your strengths.</p>
@@ -278,6 +266,7 @@ function get_all_answers_count()
         </form>
     </div>
 
-    <?php include '../templates/footer.php'; ?>
-</body>
-</html>
+   
+</main>
+                        
+ <?php include '../templates/footer.php'; ?>
