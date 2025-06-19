@@ -4,6 +4,7 @@ include_once '../templates/header.php';
 
 $account_id = $_SESSION['account_id'] ?? null;
 if(!$account_id) header("Location: /whatnext/public/login.php");
+
 class Question
 {   
     public $question;
@@ -139,6 +140,18 @@ if (!isset($_SESSION['current_question'])) {
     $_SESSION['current_question'] = 0;
 }
 
+// Function to recalculate traits from all answers
+function recalculate_traits() {
+    global $questions;
+    $_SESSION['user_traits'] = array(0, 0, 0, 0, 0);
+    
+    foreach ($_SESSION['quiz_answers'] as $questionIndex => $traitValue) {
+        if ($traitValue >= 1 && $traitValue <= 5) {
+            $_SESSION['user_traits'][$traitValue - 1]++;
+        }
+    }
+}
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
@@ -146,14 +159,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         // Save current answer if provided
         if (isset($_POST['answer'])) {
-            $_SESSION['quiz_answers'][$current] = $_POST['answer'];
-            $questions[$current]->setanswer($_POST['answer']);
-            
-            // Update trait scores
             $traitValue = intval($_POST['answer']);
-            if ($traitValue >= 1 && $traitValue <= 5) {
-                $_SESSION['user_traits'][$traitValue - 1]++;
-            }
+            $_SESSION['quiz_answers'][$current] = $traitValue;
+            $questions[$current]->setanswer($traitValue);
+            
+            // Recalculate traits to ensure accuracy
+            recalculate_traits();
         }
         
         // Handle navigation
@@ -168,7 +179,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } elseif ($_POST['action'] === 'submit') {
             // Check if all questions are answered
             if (count($_SESSION['quiz_answers']) === count($questions)) {
-                // Redirect to results page or process results
+                // Final recalculation before submitting
+                recalculate_traits();
                 header('Location: result.php');
                 exit;
             }
@@ -179,6 +191,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $currentQuestionIndex = $_SESSION['current_question'];
 $currentQuestion = $questions[$currentQuestionIndex];
 $currentAnswer = isset($_SESSION['quiz_answers'][$currentQuestionIndex]) ? $_SESSION['quiz_answers'][$currentQuestionIndex] : null;
+
+// Update question object with saved answer
+if ($currentAnswer !== null) {
+    $currentQuestion->setanswer($currentAnswer);
+}
 
 // Helper functions
 function render_circle($index, $status)
@@ -265,8 +282,6 @@ function get_all_answers_count()
             </div>
         </form>
     </div>
-
-   
 </main>
                         
- <?php include '../templates/footer.php'; ?>
+<?php include '../templates/footer.php'; ?>
