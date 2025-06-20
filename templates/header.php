@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $username = $_SESSION["username"] ?? NULL;
+$role = $_SESSION["role"] ?? NULL;
 ?>
 
 <!DOCTYPE html>
@@ -64,10 +65,13 @@ $username = $_SESSION["username"] ?? NULL;
                     <div class="profile-container hidden">
                         <img src="../public/assets/images/icon-profile.svg" alt="Profile Icon" class="profile-icon" id="profile-icon">
                         <div class="profile-dropdown" id="profile-dropdown">
-                            <a class="profile-view" href="/whatnext/public/profile.php">
-                                <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
-                                <span><?= htmlspecialchars($username) ?></span>
-                            </a>
+                            <?php if ($role === "admin"): ?>
+                                <a class="profile-view" href="/whatnext/public/admin/">
+                                    <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
+                                    <span><?= htmlspecialchars($username) ?></span>
+                                </a>
+                            <?php else: ?>
+                            <?php endif; ?>
                             <a class="profile-signout" href="/whatnext/src/auth/logout.php">
                                 <img src="../public/assets/images/icon-signout.svg" class="profile-signout-icon">
                                 Sign Out
