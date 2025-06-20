@@ -197,7 +197,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 // Final recalculation before submitting
                 recalculate_traits();
                 include_once('./calculateresult.php');
-                header('Location: result.php');
+                header('Location: /whatnext/public/analyzing.php');
                 exit;
             }
         }

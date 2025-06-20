@@ -41,7 +41,7 @@ $role = $_SESSION["role"] ?? NULL;
     <script>
         const isLoggedIn = <?= isset($_SESSION['account_id']) ? 'true' : 'false' ?>;
     </script>
-    <script src="./assets/js/header.js"></script>
+    <script src="/whatnext/public/assets/js/header.js"></script>
 </head>
 
 <body>
@@ -59,8 +59,6 @@ $role = $_SESSION["role"] ?? NULL;
                 <ul>
                     <li><a href="/whatnext/public/index.php">Home</a></li>
                     <li><a href="/whatnext/public/quiz.php">About the quiz</a></li>
-                    <li><a href="/whatnext/public/index.php">Home</a></li>
-                    <li><a href="/whatnext/public/quiz.php">About the quiz</a></li>
                 </ul>
                 <div class="auth-container">
                     <a class="button button-primary" id="login-button" href="/whatnext/public/login.php">
@@ -71,10 +69,9 @@ $role = $_SESSION["role"] ?? NULL;
                         <div class="profile-dropdown" id="profile-dropdown">
                             <?php if ($role === "admin"): ?>
                                 <a class="profile-view" href="/whatnext/public/admin/">
-                                    <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
+                                    <img src="/whatnext/public/assets/images/icon-profile.svg" class="menu-profile-icon">
                                     <span><?= htmlspecialchars($username) ?></span>
                                 </a>
-                            <?php else: ?>
                             <?php endif; ?>
                             <a class="profile-signout" href="/whatnext/src/auth/logout.php">
                                 <img src="/whatnext/public/assets/images/icon-signout.svg" class="profile-signout-icon">
@@ -95,7 +92,7 @@ $role = $_SESSION["role"] ?? NULL;
             <ul>
                 <li class="auth-mobile auth-logged-out"><a href="/whatnext/public/login.php">Login</a></li>
                 <li class="auth-mobile auth-logged-in profile-view hidden ">
-                    <img src="../public/assets/images/icon-profile.svg" class="menu-profile-icon">
+                    <img src="/whatnext/public/assets/images/icon-profile.svg" class="menu-profile-icon">
                     <span><?= htmlspecialchars($username) ?></span>
                 </li>
                 <li><a href="/whatnext/public/index.php">Home</a></li>

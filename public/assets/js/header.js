@@ -10,9 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     menuButton.classList.toggle("open");
     
     if(menuButton.classList.contains("open")) {
-      menuButtonIcon.src = "../public/assets/images/icon-close.svg"
+      menuButtonIcon.src = "/whatnext/public/assets/images/icon-close.svg"
     } else {
-      menuButtonIcon.src = "../public/assets/images/icon-menu.svg"
+      menuButtonIcon.src = "/whatnext/public/assets/images/icon-menu.svg"
     }
   });
 
