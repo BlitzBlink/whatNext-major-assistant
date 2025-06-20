@@ -15,17 +15,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($result && $result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
+            session_regenerate_id(true);
             $_SESSION['account_id'] = $user['account_id'];
             $_SESSION['username']   = $user['username'];
             $_SESSION['role']       = $user['role'];
 
-            header("Location: /whatnext/public/index.php");
+            if ($_SESSION['role'] === 'admin') {
+                header("Location: /whatnext/public/admin/");
+            } else {
+                header("Location: /whatnext/public/index.php");
+            }
             exit();
         } else {
             header("Location: /whatnext/public/login.php?error=invalid_credentials");
+            exit();
         }
     } else {
         header("Location: /whatnext/public/login.php?error=invalid_credentials");
+        exit();
     }
 
     $stmt->close();

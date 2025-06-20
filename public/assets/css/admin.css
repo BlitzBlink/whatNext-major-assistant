@@ -1,0 +1,27 @@
+@import url("majors_table.css");
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.admin .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+.container h2 {
+    font-weight: var(--fw-regular);
+    margin-bottom: .675rem;
+}
+
+.container>div {
+    width: 100%;
+    max-width: 37.5rem;
+}
+

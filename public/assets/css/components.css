@@ -1,6 +1,7 @@
 .button {
     cursor: pointer;
     display: flex;
+    font-family: inherit;
     justify-content: center;
     align-items: center;
     font-family: inherit;

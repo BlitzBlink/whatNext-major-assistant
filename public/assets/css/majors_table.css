@@ -1,0 +1,145 @@
+.header-row th {
+    padding: 0;
+    border-bottom: none;
+}
+
+.table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.search-container form {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 250px;
+}
+
+.clear {
+    margin-left: 8px; 
+    color: #6c757d; 
+    text-decoration: none;
+}
+
+.admin .button {
+    padding: .5rem .375rem;
+    min-width: 5rem;
+    font-size: var(--fs-label);
+    font-weight: var(--fw-semibold);
+}
+
+.add-icon {
+    width: 1rem;
+}
+
+.add-button {
+    display: flex;
+    gap: .5rem;
+}
+
+.table-container {
+    border: 2px solid var(--gray-color);
+    border-radius: .375rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: var(--light-gray-color);
+    padding: .75rem;
+    text-align: left;
+    border-bottom: 2px solid var(--drak-gray-color);
+    font-weight: var(--fw-bold);
+    color: var(--dark-gray-color);
+}
+
+.header-row th {
+    border-radius: .375rem .375rem 0 0;
+}
+
+td {
+    padding: .75rem;
+    border-bottom: 1px solid var(--light-gray-color);
+    text-align: left;
+}
+
+.row-green {
+    background-color: var(--light-grren-bg);
+}
+
+.row-white {
+    background-color: var(--white-color);
+}
+
+.action-btn {
+    padding: 6px 12px;
+    margin: 0 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.edit-icon, .delete-icon {
+    height: 1.25rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    border: 2px solid var(--gray-color);
+    background-color: var(--light-gray-color);
+    border-top: 1px solid var(--gray-color);
+    border-radius: 0 0 .375rem .375rem;
+
+}
+
+.pagination a,
+.pagination span {
+    padding: .5rem .675rem;
+    margin: 0 .125rem;
+    text-decoration: none;
+    border-radius: .25rem;
+}
+
+.pagination .current {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.pagination .disabled {
+    background-color: var(--gray-color);
+    border-color: var(--gray-color);
+    color: var(--dark-gray-color);
+    cursor: not-allowed;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2.5rem;
+    color: var(--dark-gray-color);
+}
+
+.results-info {
+    padding: 10px 20px;
+    background-color: var(--light-gray-color);
+    border-bottom: 1px solid var(--gray-color);
+    font-size: var(--fs-text);
+    color: var(--dark-gray-color);
+}
